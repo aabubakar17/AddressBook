@@ -76,7 +76,7 @@
 
 **As a user**,
 
-**so that I can** search for a contact by various criteria,
+**so that I can** that find my contacts easily,
 
 **I would like to** search for a contact by name, phone number, or email address and have the results displayed in alphabetical order.
 
