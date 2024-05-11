@@ -8,16 +8,16 @@ classDiagram
         + searchByName(name: string): Contact
         + searchByPhoneNumber(phoneNumber: string): Contact
         + searchByEmail(email: string): Contact
-        + viewAllContacts(): ArrayList<Contact>
+        + viewAllContacts(): ArrayList~Contact~
     }
     class ContactManager {
-        - contacts: ArrayList<Contact>
+        - contacts: ArrayList~Contact~
         + addContact(contact: Contact): void
         + editContact(contact: Contact): void
         + removeContact(contact: Contact): void
-        + sortContacts(ArrayList<Contact>) : ArrayList<Contact> 
+        + sortContacts(ArrayList~Contact~) : ArrayList~Contact~
         + checkUniqueContact(contact: Contact): boolean
-        + getContacts(): ArrayList<Contact>
+        + getContacts(): ArrayList~Contact~
         + deleteAllContacts(): void
     }
     class Contact {
@@ -32,6 +32,10 @@ classDiagram
         + setEmail(email: string): void
     }
 
+    class PrintToConsole {
+        + print(contact: Contact)$: void
+        + print(contacts: ArrayList~Contact~)$: void
+    }
     AddressBook  --> ContactManager
     ContactManager --> "0..*" Contact
 
