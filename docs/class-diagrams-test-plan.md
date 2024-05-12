@@ -57,7 +57,7 @@ classDiagram
 
 #### Test Plan:
 - [x] **Add Contact with Name, Phone Number, and Email Address**: Add a contact with a name, phone number, and email address. Expect the contact details to be correctly stored.
-- [ ] **Create Contact with Missing Information:** Attempt to create a contact with missing name, phone number, or email address. Expect an error indicating that all fields are required.
+- [x] **Create Contact with Missing Information:** Attempt to create a contact with missing name, phone number, or email address. Expect an error indicating that all fields are required.
 
 ## User Story 3
 **As a user, so that I can quickly find a specific contact, I would like to search for a contact by name and have the results displayed.**
