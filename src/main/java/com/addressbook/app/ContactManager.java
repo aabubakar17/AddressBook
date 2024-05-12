@@ -3,7 +3,7 @@ package com.addressbook.app;
 import java.util.ArrayList;
 
 public class ContactManager {
-private final ArrayList<Contact> contacts;
+   private final ArrayList<Contact> contacts;
 
    public ContactManager() {
       this.contacts = new ArrayList<>();
