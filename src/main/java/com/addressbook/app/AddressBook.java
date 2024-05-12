@@ -18,6 +18,10 @@ public class AddressBook {
 
     }
 
+    public void editContact(Contact oldContact, Contact updatedContact) {
+        contactManager.editContact(oldContact, updatedContact);
+    }
+
     public Contact searchByName(String name) {
         ArrayList<Contact> allContacts = contactManager.getContacts();
         for (Contact contact : allContacts) {

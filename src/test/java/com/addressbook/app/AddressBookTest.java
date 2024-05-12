@@ -106,4 +106,78 @@ public class AddressBookTest {
 
 
     }
+    @Nested
+    @DisplayName("editContacts")
+    class editContacts{
+        private AddressBook testAddressBook;
+        private ContactManager contactManager;
+        private Contact mockContact;
+        private Contact updatedContact;
+
+        @BeforeEach
+        public void setUp() {
+            contactManager = new ContactManager();
+            testAddressBook = new AddressBook(contactManager);
+            mockContact = mock(Contact.class);
+        }
+        @Test
+        @DisplayName("Test editing a contact's name")
+        void testEditingAContactsName() {
+            // ARRANGE
+            updatedContact = mock(Contact.class);
+            when(mockContact.getName()).thenReturn("karry hane");
+            when(mockContact.getPhoneNumber()).thenReturn("07956809739");
+            when(mockContact.getEmail()).thenReturn("karry.hane@gmail.com");
+            when(updatedContact.getName()).thenReturn("rayne wooney");
+
+
+            // ACT
+            testAddressBook.addContact(mockContact);
+            testAddressBook.editContact(mockContact, updatedContact);
+
+            // ASSERT
+            assertEquals("rayne wooney", testAddressBook.viewAllContacts().get(0).getName());
+        }
+
+
+
+        @Test
+        @DisplayName("Test editing a contact's phone number")
+        void testEditingAContactsPhoneNumber() {
+            // ARRANGE
+            updatedContact = mock(Contact.class);
+            when(mockContact.getName()).thenReturn("karry hane");
+            when(mockContact.getPhoneNumber()).thenReturn("07956809739");
+            when(mockContact.getEmail()).thenReturn("karry.hane@gmail.com");
+            when(updatedContact.getPhoneNumber()).thenReturn("07777777777");
+
+
+            // ACT
+            testAddressBook.addContact(mockContact);
+            testAddressBook.editContact(mockContact, updatedContact);
+
+            // ASSERT
+            assertEquals("07777777777", testAddressBook.viewAllContacts().get(0).getPhoneNumber());
+        }
+
+
+        @Test
+        @DisplayName("Test editing a contact's email address")
+        void testEditingAContactsEmailAddress() {
+            // ARRANGE
+            updatedContact = mock(Contact.class);
+            when(mockContact.getName()).thenReturn("karry hane");
+            when(mockContact.getPhoneNumber()).thenReturn("07956809739");
+            when(mockContact.getEmail()).thenReturn("karry.hane@gmail.com");
+            when(updatedContact.getEmail()).thenReturn("rayne.wooney@gmail.com");
+
+
+            // ACT
+            testAddressBook.addContact(mockContact);
+            testAddressBook.editContact(mockContact, updatedContact);
+
+            // ASSERT
+            assertEquals("rayne.wooney@gmail.com", testAddressBook.viewAllContacts().get(0).getEmail());
+        }
+    }
 }

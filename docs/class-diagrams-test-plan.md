@@ -13,7 +13,7 @@ classDiagram
     class ContactManager {
         - contacts: ArrayList~Contact~
         + addContact(contact: Contact): void
-        + editContact(contact: Contact): void
+        + editContact(contact: Contact): contact
         + removeContact(contact: Contact): void
         + sortContacts(ArrayList~Contact~) : ArrayList~Contact~
         + checkUniqueContact(contact: Contact): boolean
@@ -70,7 +70,7 @@ classDiagram
 **As a user, so that I can keep my address book updated, I would like to edit a contact's details.**
 
 #### Test Plan:
-- [ ] **Edit Contact Details**: Edit the details of an existing contact. Expect the contact details to be successfully updated.
+- [x] **Edit Contact Details**: Edit the details of an existing contact. Expect the contact details to be successfully updated.
 - [ ] **Edit Non-Existent Contact:** Attempt to edit a contact that does not exist in the address book. Expect an error indicating that the contact does not exist.
 
 ## User Story 5
