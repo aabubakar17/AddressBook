@@ -18,7 +18,15 @@ public class AddressBook {
 
     }
 
-
+    public Contact searchByName(String name) {
+        ArrayList<Contact> allContacts = contactManager.getContacts();
+        for (Contact contact : allContacts) {
+            if (contact.getName().equals(name)) {
+                return contact;
+            }
+        }
+        return null;
+    }
     public ArrayList<Contact> viewAllContacts() {
         return contactManager.getContacts();
     }

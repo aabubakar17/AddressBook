@@ -63,7 +63,7 @@ classDiagram
 **As a user, so that I can quickly find a specific contact, I would like to search for a contact by name and have the results displayed.**
 
 #### Test Plan:
-- [ ] **Search by Name**: Search for a contact by name. Expect the contact with the specified name to be returned.
+- [x] **Search by Name**: Search for a contact by name. Expect the contact with the specified name to be returned.
 - [ ] **Search for Non-Existent Name:** Search for a contact with a name that does not exist in the address book. Expect an empty result.
 
 ## User Story 4
