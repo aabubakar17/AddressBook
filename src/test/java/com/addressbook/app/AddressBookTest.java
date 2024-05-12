@@ -179,5 +179,18 @@ public class AddressBookTest {
             // ASSERT
             assertEquals("rayne.wooney@gmail.com", testAddressBook.viewAllContacts().get(0).getEmail());
         }
+
+        @Test
+        @DisplayName("Test edit non-existent contact")
+        void testEditNonExistentContact() {
+            //ARRANGE
+            updatedContact = mock(Contact.class);
+            when(updatedContact.getEmail()).thenReturn("rayne.wooney@gmail.com");
+
+
+            //ASSERT
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.editContact(mockContact, updatedContact));
+        }
+
     }
 }
