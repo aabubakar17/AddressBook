@@ -12,7 +12,10 @@ public class AddressBook {
 
 
     public void addContact(Contact contact) {
-        contactManager.addContact(contact);
+        if (contactManager.validateContact(contact)) {
+            contactManager.addContact(contact);
+        }
+
     }
 
 

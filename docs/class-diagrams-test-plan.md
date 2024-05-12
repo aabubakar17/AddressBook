@@ -50,7 +50,7 @@ classDiagram
 #### Test Plan:
 - [x] **Add Contact**: Add a contact to the address book. Expect the contact to be successfully added.
 
-- [ ] ***Add Contact with Empty Fields***: Attempt to add a contact with empty name, phone number, or email fields. Expect an error indicating that all fields are required.
+- [x] ***Add Contact with Empty Fields***: Attempt to add a contact with empty name, phone number, or email fields. Expect an error indicating that all fields are required.
 
 ## User Story 2
 **As a user, so that I can easily identify my contacts, I would like each contact to have a name, phone number, and email address.**

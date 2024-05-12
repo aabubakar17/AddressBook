@@ -27,6 +27,9 @@ public class AddressBookTest {
         @DisplayName("Test addContact adds given contact to address book")
         void TestAddContactAddsGivenContactToAddressBook() {
             //ARRANGE
+            when(mockContact.getName()).thenReturn("karry hane");
+            when(mockContact.getPhoneNumber()).thenReturn("07956809739");
+            when(mockContact.getEmail()).thenReturn("karry.hane@gmail.com");
             when(mockContactManager.getContacts()).thenReturn(new ArrayList<>(List.of(mockContact)));
 
             //ACT
@@ -35,5 +38,19 @@ public class AddressBookTest {
            //ASSERT
             assertTrue(testAddressBook.viewAllContacts().contains(mockContact));
         }
+
+        @Test
+        @DisplayName("Test addContact throws error for contact with empty fields")
+        void testAddContactThrowsErrorForContactWithEmptyFields() {
+            //ARRANGE
+            when(mockContact.getName()).thenReturn("");
+            when(mockContact.getPhoneNumber()).thenReturn("");
+            when(mockContact.getEmail()).thenReturn("");
+            when(mockContactManager.validateContact(mockContact)).thenThrow(new IllegalArgumentException("All contact fields are required"));
+
+            // ASSERT
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.addContact(mockContact));
+        }
+
     }
 }
