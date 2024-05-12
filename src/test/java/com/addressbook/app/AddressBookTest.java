@@ -62,12 +62,8 @@ public class AddressBookTest {
             testAddressBook = new AddressBook(contactManager);
             mockContact = mock(Contact.class);
             mockContactTwo = mock(Contact.class);
-        }
 
-        @Test
-        @DisplayName("Test searching for a contact by name")
-        void testSearchingForAContactByName() {
-            //ARRANGE
+
             when(mockContact.getName()).thenReturn("karry hane");
             when(mockContact.getPhoneNumber()).thenReturn("07956809739");
             when(mockContact.getEmail()).thenReturn("karry.hane@gmail.com");
@@ -75,6 +71,13 @@ public class AddressBookTest {
             when(mockContactTwo.getName()).thenReturn("rayne wooney");
             when(mockContactTwo.getPhoneNumber()).thenReturn("07956806754");
             when(mockContactTwo.getEmail()).thenReturn("rayne.wooney@gmail.com");
+        }
+
+        @Test
+        @DisplayName("Test searching for a contact by name")
+        void testSearchingForAContactByName() {
+            //ARRANGE
+
 
             //ACT
             testAddressBook.addContact(mockContact);
@@ -85,5 +88,22 @@ public class AddressBookTest {
             assertEquals("rayne wooney", foundContact.getName());
             assertTrue(testAddressBook.viewAllContacts().contains(foundContact));
         }
+
+        @Test
+        @DisplayName("Test searching for a non-existent contact by name")
+        void testSearchingForNonExistentContactByName() {
+            //ARRANGE
+
+
+            //ACT
+            testAddressBook.addContact(mockContact);
+            testAddressBook.addContact(mockContactTwo);
+            Contact foundContact = testAddressBook.searchByName("pan versie");
+
+            //ASSERT
+            assertNull(foundContact);
+        }
+
+
     }
 }

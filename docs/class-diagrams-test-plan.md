@@ -64,7 +64,7 @@ classDiagram
 
 #### Test Plan:
 - [x] **Search by Name**: Search for a contact by name. Expect the contact with the specified name to be returned.
-- [ ] **Search for Non-Existent Name:** Search for a contact with a name that does not exist in the address book. Expect an empty result.
+- [X] **Search for Non-Existent Name:** Search for a contact with a name that does not exist in the address book. Expect an empty result.
 
 ## User Story 4
 **As a user, so that I can keep my address book updated, I would like to edit a contact's details.**
