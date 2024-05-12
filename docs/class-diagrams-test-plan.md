@@ -48,7 +48,7 @@ classDiagram
 **As a user, so that I can store my contacts, I would like to add a contact to the address book.**
 
 #### Test Plan:
-- [ ] **Add Contact**: Add a contact to the address book. Expect the contact to be successfully added.
+- [x] **Add Contact**: Add a contact to the address book. Expect the contact to be successfully added.
 
 - [ ] ***Add Contact with Empty Fields***: Attempt to add a contact with empty name, phone number, or email fields. Expect an error indicating that all fields are required.
 
