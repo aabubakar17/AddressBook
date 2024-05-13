@@ -82,7 +82,7 @@ classDiagram
 
 #### Test Plan:
 - [x] **Add Contact with Duplicate Phone Number**: Attempt to add a contact with a phone number that is already assigned to another contact. Expect an error indicating that duplicate phone numbers are not allowed.
-- [ ] **Add Contact with Duplicate Email Address**: Attempt to add a contact with an email address that is already assigned to another contact. Expect an error indicating that duplicate email addresses are not allowed.
+- [x] **Add Contact with Duplicate Email Address**: Attempt to add a contact with an email address that is already assigned to another contact. Expect an error indicating that duplicate email addresses are not allowed.
 
 ## User Story 7
 **As a user, so that I can view all my contacts at once, I would like to view all contacts in the address book.**

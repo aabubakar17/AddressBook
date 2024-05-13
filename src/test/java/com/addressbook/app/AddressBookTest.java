@@ -271,5 +271,24 @@ public class AddressBookTest {
                 assertThrows(IllegalArgumentException.class, () -> testAddressBook.addContact(mockContact2));
             }
 
+            @Test
+            @DisplayName("Test adding contact with duplicate email address")
+            void testAddingContactWithDuplicateEmailAddress() {
+                // ARRANGE
+                when(mockContact1.getName()).thenReturn("karry hane");
+                when(mockContact1.getPhoneNumber()).thenReturn("079568865134");
+                when(mockContact1.getEmail()).thenReturn("karry.hane@gmail.com");
+
+                when(mockContact2.getPhoneNumber()).thenReturn("07956809739");
+                when(mockContact2.getEmail()).thenReturn("karry.hane@gmail.com");
+                when(mockContact2.getName()).thenReturn("rayne wooney");
+
+                // ACT
+                testAddressBook.addContact(mockContact1);
+
+                // ASSERT
+                assertThrows(IllegalArgumentException.class, () -> testAddressBook.addContact(mockContact2));
+            }
+
         }
 }

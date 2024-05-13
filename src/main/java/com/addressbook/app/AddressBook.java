@@ -48,7 +48,7 @@ public class AddressBook {
 
     private boolean checkUniqueContact(Contact newContact) {
         for (Contact existingContact : contacts) {
-            if (existingContact.getPhoneNumber().equals(newContact.getPhoneNumber())) {
+            if (existingContact.getPhoneNumber().equals(newContact.getPhoneNumber()) || existingContact.getEmail().equals(newContact.getEmail())) {
                 throw new IllegalArgumentException("Contact already exist.");
             }
         }
