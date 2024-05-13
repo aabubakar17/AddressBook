@@ -95,7 +95,7 @@ classDiagram
 **As a user, so that I can search for a contact by phone number, I would like to search for a contact by phone number and have the results displayed.**
 
 #### Test Plan:
-- [ ] **Search by Phone Number**: Search for a contact by phone number. Expect the contact with the specified phone number to be returned.
+- [x] **Search by Phone Number**: Search for a contact by phone number. Expect the contact with the specified phone number to be returned.
 - [ ] **Search for Non-Existent Phone Number**: Search for a contact with a phone number that does not exist in the address book. Expect an empty result.
 
 ## User Story 9

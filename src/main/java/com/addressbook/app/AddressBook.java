@@ -42,6 +42,15 @@ public class AddressBook {
         return null;
     }
 
+    public Contact searchByPhoneNumber(String number) {
+        for (Contact contact : contacts) {
+            if (contact.getPhoneNumber().equals(number)) {
+                return contact;
+            }
+        }
+        return null;
+    }
+
     public ArrayList<Contact> viewAllContacts() {
         return contacts;
     }

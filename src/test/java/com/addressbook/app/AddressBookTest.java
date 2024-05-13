@@ -101,6 +101,20 @@ public class AddressBookTest {
         }
 
 
+        @Test
+        @DisplayName("Test searching for a contact by Phone Number")
+        void testSearchingForAContactByPhoneNumber() {
+
+            //ACT
+            testAddressBook.addContact(mockContact);
+            testAddressBook.addContact(mockContactTwo);
+            Contact foundContact = testAddressBook.searchByPhoneNumber("07956806754");
+
+            //ASSERT
+            assertEquals("07956806754", foundContact.getPhoneNumber());
+            assertTrue(testAddressBook.viewAllContacts().contains(foundContact));
+        }
+
     }
 
     @Nested
@@ -343,4 +357,10 @@ public class AddressBookTest {
 
 
     }
+
+
+
+
+
+
 }
