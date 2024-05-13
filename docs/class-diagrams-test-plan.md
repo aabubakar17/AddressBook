@@ -88,7 +88,7 @@ classDiagram
 **As a user, so that I can view all my contacts at once, I would like to view all contacts in the address book.**
 
 #### Test Plan:
-- [ ] **View All Contacts**: Retrieve all contacts from the address book. Expect the list of contacts to be returned.
+- [x] **View All Contacts**: Retrieve all contacts from the address book. Expect the list of contacts to be returned.
 - [ ] **View Empty Address Book**: Attempt to view all contacts when the address book is empty. Expect an empty result.
 
 ## User Story 8
