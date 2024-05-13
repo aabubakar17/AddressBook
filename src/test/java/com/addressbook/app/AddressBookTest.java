@@ -115,6 +115,19 @@ public class AddressBookTest {
             assertTrue(testAddressBook.viewAllContacts().contains(foundContact));
         }
 
+        @Test
+        @DisplayName("Test searching for a non-existent contact by Phone Number")
+        void testSearchingForNonExistentContactByPhoneNumber() {
+
+            //ACT
+            testAddressBook.addContact(mockContact);
+            testAddressBook.addContact(mockContactTwo);
+            Contact foundContact = testAddressBook.searchByPhoneNumber("7777777777");
+
+            //ASSERT
+            assertNull(foundContact);
+        }
+
     }
 
     @Nested
