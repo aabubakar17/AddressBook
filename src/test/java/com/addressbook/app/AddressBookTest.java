@@ -142,6 +142,18 @@ public class AddressBookTest {
             assertTrue(testAddressBook.viewAllContacts().contains(foundContact));
         }
 
+        @Test
+        @DisplayName("Test searching for a non-existent contact by email address")
+        void testSearchingForNonExistentContactByEmailAddress() {
+
+            //ACT
+            testAddressBook.addContact(mockContact);
+            testAddressBook.addContact(mockContactTwo);
+            Contact foundContact = testAddressBook.searchByEmail("not.email@gmail.com");
+
+            //ASSERT
+            assertNull(foundContact);
+        }
 
 
     }

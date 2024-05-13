@@ -103,7 +103,7 @@ classDiagram
 
 #### Test Plan:
 - [x] **Search by Email Address**: Search for a contact by email address. Expect the contact with the specified email address to be returned.
-- [ ] **Search for Non-Existent Email Address**: Search for a contact with an email address that does not exist in the address book. Expect an empty result.
+- [x] **Search for Non-Existent Email Address**: Search for a contact with an email address that does not exist in the address book. Expect an empty result.
 
 ## User Story 10
 **As a user, so that I can search for a contact by various criteria, I would like to search for a contact by name, phone number, or email address and have the results displayed in alphabetical order.**
