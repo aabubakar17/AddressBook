@@ -128,6 +128,22 @@ public class AddressBookTest {
             assertNull(foundContact);
         }
 
+        @Test
+        @DisplayName("Test searching for a contact by email address")
+        void testSearchingForAContactByEmailAddress() {
+
+            //ACT
+            testAddressBook.addContact(mockContact);
+            testAddressBook.addContact(mockContactTwo);
+            Contact foundContact = testAddressBook.searchByEmail("rayne.wooney@gmail.com");
+
+            //ASSERT
+            assertEquals("rayne.wooney@gmail.com", foundContact.getEmail());
+            assertTrue(testAddressBook.viewAllContacts().contains(foundContact));
+        }
+
+
+
     }
 
     @Nested

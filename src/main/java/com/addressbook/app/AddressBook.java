@@ -51,6 +51,16 @@ public class AddressBook {
         return null;
     }
 
+    public Contact searchByEmail(String email) {
+        for (Contact contact : contacts) {
+            if (contact.getEmail().equals(email)) {
+                return contact;
+            }
+        }
+        return null;
+    }
+
+
     public ArrayList<Contact> viewAllContacts() {
         return contacts;
     }

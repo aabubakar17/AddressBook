@@ -102,7 +102,7 @@ classDiagram
 **As a user, so that I can search for a contact by email address, I would like to search for a contact by email address and have the results displayed.**
 
 #### Test Plan:
-- [ ] **Search by Email Address**: Search for a contact by email address. Expect the contact with the specified email address to be returned.
+- [x] **Search by Email Address**: Search for a contact by email address. Expect the contact with the specified email address to be returned.
 - [ ] **Search for Non-Existent Email Address**: Search for a contact with an email address that does not exist in the address book. Expect an empty result.
 
 ## User Story 10
