@@ -220,5 +220,17 @@ public class AddressBookTest {
             assertFalse(testAddressBook.viewAllContacts().contains(mockContact));
         }
 
+        @Test
+        @DisplayName("Test removing non-existent contact")
+        void testRemovingNonExistentContact() {
+            // ARRANGE
+
+            // ACT
+            testAddressBook.removeContact(mockContact);
+
+            // ASSERT
+            assertFalse(testAddressBook.viewAllContacts().contains(mockContact));
+        }
+
     }
 }

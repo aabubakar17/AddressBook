@@ -75,7 +75,7 @@ classDiagram
 
 #### Test Plan:
 - [x] **Remove Contact**: Remove a contact from the address book. Expect the contact to be successfully removed.
-- [ ] **Remove Non-Existent Contact**: Attempt to remove a contact that does not exist in the address book. Expect an error indicating that the contact does not exist.
+- [x] **Remove Non-Existent Contact**: Attempt to remove a contact that does not exist in the address book. Expect an error indicating that the contact does not exist.
 
 ## User Story 6
 **As a user, so that I can ensure contact uniqueness, I would like duplicate phone numbers or email addresses not to be allowed.**
