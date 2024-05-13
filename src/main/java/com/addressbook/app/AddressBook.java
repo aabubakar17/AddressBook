@@ -3,35 +3,48 @@ package com.addressbook.app;
 import java.util.ArrayList;
 
 public class AddressBook {
-    private final ContactManager contactManager;
+    private final ArrayList<Contact> contacts;
 
-
-    public AddressBook(ContactManager contactManager) {
-        this.contactManager = contactManager;
+    public AddressBook() {
+        this.contacts = new ArrayList<>();
     }
 
 
-    public void addContact(Contact contact) {
-        if (contactManager.validateContact(contact)) {
-            contactManager.addContact(contact);
-        }
+    public void addContact(Contact newContact) {
 
+        if (validateContact(newContact)) {
+        contacts.add(newContact);}
     }
 
     public void editContact(Contact oldContact, Contact updatedContact) {
-        contactManager.editContact(oldContact, updatedContact);
+        for (int i = 0; i < contacts.size(); i++) {
+            Contact c = contacts.get(i);
+            if (c.equals(oldContact)) {
+                contacts.set(i, updatedContact);
+                return;
+            }
+        }
+        throw new IllegalArgumentException("Contact not found: " + updatedContact);
     }
 
     public Contact searchByName(String name) {
-        ArrayList<Contact> allContacts = contactManager.getContacts();
-        for (Contact contact : allContacts) {
+        for (Contact contact : contacts) {
             if (contact.getName().equals(name)) {
                 return contact;
             }
         }
         return null;
     }
+
     public ArrayList<Contact> viewAllContacts() {
-        return contactManager.getContacts();
+        return contacts;
     }
+
+    public boolean validateContact(Contact contact) {
+        if (contact == null || contact.getName().isEmpty() || contact.getPhoneNumber().isEmpty() || contact.getEmail().isEmpty()) {
+            throw new IllegalArgumentException("All contact fields are required");
+        }
+        return true;
+    }
+
 }

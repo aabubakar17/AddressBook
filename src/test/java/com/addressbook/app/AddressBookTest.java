@@ -10,13 +10,11 @@ public class AddressBookTest {
     @DisplayName("AddContact")
     class AddContact {
         private AddressBook testAddressBook;
-        private ContactManager contactManager;
         private Contact mockContact;
 
         @BeforeEach
         public void setUp() {
-            contactManager = new ContactManager();
-            testAddressBook = new AddressBook(contactManager);
+            testAddressBook = new AddressBook();
             mockContact = mock(Contact.class);
         }
 
@@ -52,14 +50,12 @@ public class AddressBookTest {
     @DisplayName("SearchContact")
     class SearchContact {
         private AddressBook testAddressBook;
-        private ContactManager contactManager;
         private Contact mockContact;
         private Contact mockContactTwo;
 
         @BeforeEach
         public void setUp() {
-            contactManager = new ContactManager(); // Using real ContactManager instance
-            testAddressBook = new AddressBook(contactManager);
+            testAddressBook = new AddressBook();
             mockContact = mock(Contact.class);
             mockContactTwo = mock(Contact.class);
 
@@ -110,14 +106,14 @@ public class AddressBookTest {
     @DisplayName("editContacts")
     class editContacts{
         private AddressBook testAddressBook;
-        private ContactManager contactManager;
+
         private Contact mockContact;
         private Contact updatedContact;
 
         @BeforeEach
         public void setUp() {
-            contactManager = new ContactManager();
-            testAddressBook = new AddressBook(contactManager);
+
+            testAddressBook = new AddressBook();
             mockContact = mock(Contact.class);
         }
         @Test

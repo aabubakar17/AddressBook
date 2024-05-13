@@ -4,22 +4,19 @@
 ```mermaid
 classDiagram
     class AddressBook {
-        - contactManager: ContactManager
+        - contacts: ArrayList~Contact~
         + searchByName(name: string): Contact
         + searchByPhoneNumber(phoneNumber: string): Contact
         + searchByEmail(email: string): Contact
-        + viewAllContacts(): ArrayList~Contact~
-    }
-    class ContactManager {
-        - contacts: ArrayList~Contact~
+        + viewAllContacts(): ArrayList~Contact~ 
         + addContact(contact: Contact): void
         + editContact(contact: Contact): contact
         + removeContact(contact: Contact): void
-        + sortContacts(ArrayList~Contact~) : ArrayList~Contact~
-        + checkUniqueContact(contact: Contact): boolean
-        + getContacts(): ArrayList~Contact~
+        - sortContacts(ArrayList~Contact~) : ArrayList~Contact~
+        - checkUniqueContact(contact: Contact): boolean
         + deleteAllContacts(): void
     }
+    
     class Contact {
         - name: string
         - phoneNumber: string
@@ -36,8 +33,8 @@ classDiagram
         + print(contact: Contact)$: void
         + print(contacts: ArrayList~Contact~)$: void
     }
-    AddressBook  --> ContactManager
-    ContactManager --> "0..*" Contact
+    
+    AddressBook  --> "0..*" Contact
 
 ```
 
