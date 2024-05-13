@@ -89,7 +89,7 @@ classDiagram
 
 #### Test Plan:
 - [x] **View All Contacts**: Retrieve all contacts from the address book. Expect the list of contacts to be returned.
-- [ ] **View Empty Address Book**: Attempt to view all contacts when the address book is empty. Expect an empty result.
+- [x] **View Empty Address Book**: Attempt to view all contacts when the address book is empty. Expect an empty result.
 
 ## User Story 8
 **As a user, so that I can search for a contact by phone number, I would like to search for a contact by phone number and have the results displayed.**

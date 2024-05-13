@@ -305,12 +305,7 @@ public class AddressBookTest {
             testAddressBook = new AddressBook();
             mockContact1 = mock(Contact.class);
             mockContact2 = mock(Contact.class);
-        }
 
-        @Test
-        @DisplayName("Test view all contacts")
-        void testViewAllContacts() {
-            // ARRANGE
             when(mockContact1.getName()).thenReturn("karry hane");
             when(mockContact1.getPhoneNumber()).thenReturn("079568865134");
             when(mockContact1.getEmail()).thenReturn("karry.hane@gmail.com");
@@ -318,6 +313,12 @@ public class AddressBookTest {
             when(mockContact2.getPhoneNumber()).thenReturn("07956809739");
             when(mockContact2.getEmail()).thenReturn("rayne.wooney@gmail.com");
             when(mockContact2.getName()).thenReturn("rayne wooney");
+
+        }
+
+        @Test
+        @DisplayName("Test view all contacts")
+        void testViewAllContacts() {
 
             // ACT
             testAddressBook.addContact(mockContact1);
@@ -330,5 +331,16 @@ public class AddressBookTest {
             );
 
         }
+
+
+        @Test
+        @DisplayName("Test view all contacts for empty address book")
+        void testViewAllContactsForEmptyAddressBook() {
+
+            // ASSERT
+            assertTrue(testAddressBook.viewAllContacts().isEmpty());
+        }
+
+
     }
 }
