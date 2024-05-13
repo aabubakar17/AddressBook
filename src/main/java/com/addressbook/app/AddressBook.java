@@ -27,6 +27,10 @@ public class AddressBook {
         throw new IllegalArgumentException("Contact not found: " + updatedContact);
     }
 
+    public void removeContact(Contact removeContact){
+        contacts.remove(removeContact);
+    }
+
     public Contact searchByName(String name) {
         for (Contact contact : contacts) {
             if (contact.getName().equals(name)) {

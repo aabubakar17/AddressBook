@@ -102,9 +102,10 @@ public class AddressBookTest {
 
 
     }
+
     @Nested
     @DisplayName("editContacts")
-    class editContacts{
+    class editContacts {
         private AddressBook testAddressBook;
 
         private Contact mockContact;
@@ -116,6 +117,7 @@ public class AddressBookTest {
             testAddressBook = new AddressBook();
             mockContact = mock(Contact.class);
         }
+
         @Test
         @DisplayName("Test editing a contact's name")
         void testEditingAContactsName() {
@@ -134,7 +136,6 @@ public class AddressBookTest {
             // ASSERT
             assertEquals("rayne wooney", testAddressBook.viewAllContacts().get(0).getName());
         }
-
 
 
         @Test
@@ -186,6 +187,37 @@ public class AddressBookTest {
 
             //ASSERT
             assertThrows(IllegalArgumentException.class, () -> testAddressBook.editContact(mockContact, updatedContact));
+        }
+
+    }
+
+
+    @Nested
+    @DisplayName("RemoveContacts")
+    class RemoveContacts {
+        private AddressBook testAddressBook;
+        private Contact mockContact;
+
+        @BeforeEach
+        public void setUp() {
+
+            testAddressBook = new AddressBook();
+            mockContact = mock(Contact.class);
+            when(mockContact.getName()).thenReturn("karry hane");
+            when(mockContact.getPhoneNumber()).thenReturn("07956809739");
+            when(mockContact.getEmail()).thenReturn("karry.hane@gmail.com");
+        }
+        @Test
+        @DisplayName("Test removing a contact from the address book")
+        void testRemovingAContactFromAddressBook() {
+            // ARRANGE
+
+            // ACT
+            testAddressBook.addContact(mockContact);
+            testAddressBook.removeContact(mockContact);
+
+            // ASSERT
+            assertFalse(testAddressBook.viewAllContacts().contains(mockContact));
         }
 
     }

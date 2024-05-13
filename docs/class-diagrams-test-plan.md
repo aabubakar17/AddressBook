@@ -74,7 +74,7 @@ classDiagram
 **As a user, so that I can remove outdated or incorrect contacts, I would like to remove a contact from the address book.**
 
 #### Test Plan:
-- [ ] **Remove Contact**: Remove a contact from the address book. Expect the contact to be successfully removed.
+- [x] **Remove Contact**: Remove a contact from the address book. Expect the contact to be successfully removed.
 - [ ] **Remove Non-Existent Contact**: Attempt to remove a contact that does not exist in the address book. Expect an error indicating that the contact does not exist.
 
 ## User Story 6
