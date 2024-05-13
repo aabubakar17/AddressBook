@@ -233,4 +233,43 @@ public class AddressBookTest {
         }
 
     }
+
+
+
+
+        @Nested
+        @DisplayName("Check Contact Uniqueness")
+        class CheckContactUniqueness {
+
+            private AddressBook testAddressBook;
+            private Contact mockContact1;
+            private Contact mockContact2;
+
+            @BeforeEach
+            public void setUp() {
+                testAddressBook = new AddressBook();
+                mockContact1 = mock(Contact.class);
+                mockContact2 = mock(Contact.class);
+            }
+
+            @Test
+            @DisplayName("Test adding contact with duplicate phone number")
+            void testAddingContactWithDuplicatePhoneNumber() {
+                // ARRANGE
+                when(mockContact1.getName()).thenReturn("karry hane");
+                when(mockContact1.getPhoneNumber()).thenReturn("07956809739");
+                when(mockContact1.getEmail()).thenReturn("karry.hane@gmail.com");
+
+                when(mockContact2.getPhoneNumber()).thenReturn("07956809739");
+                when(mockContact2.getEmail()).thenReturn("rayne.wooney@gmail.com");
+                when(mockContact2.getName()).thenReturn("rayne wooney");
+
+                // ACT
+                testAddressBook.addContact(mockContact1);
+
+                // ASSERT
+                assertThrows(IllegalArgumentException.class, () -> testAddressBook.addContact(mockContact2));
+            }
+
+        }
 }

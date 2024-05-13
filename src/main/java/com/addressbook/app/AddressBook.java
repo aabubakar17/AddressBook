@@ -12,8 +12,10 @@ public class AddressBook {
 
     public void addContact(Contact newContact) {
 
-        if (validateContact(newContact)) {
-        contacts.add(newContact);}
+        if (validateContact(newContact) && checkUniqueContact(newContact)) {
+        contacts.add(newContact);
+        }
+
     }
 
     public void editContact(Contact oldContact, Contact updatedContact) {
@@ -42,6 +44,15 @@ public class AddressBook {
 
     public ArrayList<Contact> viewAllContacts() {
         return contacts;
+    }
+
+    private boolean checkUniqueContact(Contact newContact) {
+        for (Contact existingContact : contacts) {
+            if (existingContact.getPhoneNumber().equals(newContact.getPhoneNumber())) {
+                throw new IllegalArgumentException("Contact already exist.");
+            }
+        }
+        return true;
     }
 
     public boolean validateContact(Contact contact) {

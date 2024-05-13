@@ -81,7 +81,7 @@ classDiagram
 **As a user, so that I can ensure contact uniqueness, I would like duplicate phone numbers or email addresses not to be allowed.**
 
 #### Test Plan:
-- [ ] **Add Contact with Duplicate Phone Number**: Attempt to add a contact with a phone number that is already assigned to another contact. Expect an error indicating that duplicate phone numbers are not allowed.
+- [x] **Add Contact with Duplicate Phone Number**: Attempt to add a contact with a phone number that is already assigned to another contact. Expect an error indicating that duplicate phone numbers are not allowed.
 - [ ] **Add Contact with Duplicate Email Address**: Attempt to add a contact with an email address that is already assigned to another contact. Expect an error indicating that duplicate email addresses are not allowed.
 
 ## User Story 7
