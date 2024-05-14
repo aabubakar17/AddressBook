@@ -74,6 +74,10 @@ public class AddressBook {
         return contacts;
     }
 
+    public void deleteAllContacts() {
+        contacts.clear();
+    }
+
     private boolean checkUniqueContact(Contact newContact) {
         for (Contact existingContact : contacts) {
             if (existingContact.getPhoneNumber().equals(newContact.getPhoneNumber()) || existingContact.getEmail().equals(newContact.getEmail())) {

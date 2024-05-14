@@ -115,6 +115,6 @@ classDiagram
 **As a user, so that I can clear my address book, I would like to delete all contacts at once, confirming that I want to do this before proceeding.**
 
 #### Test Plan:
-- [ ] **Delete All Contacts**: Delete all contacts from the address book. Expect the address book to be empty after deletion.
+- [x] **Delete All Contacts**: Delete all contacts from the address book. Expect the address book to be empty after deletion.
 - [ ] **Cancel Deletion**: Attempt to delete all contacts but cancel the operation when prompted. Expect no contacts to be deleted.
 
