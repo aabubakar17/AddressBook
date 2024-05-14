@@ -109,9 +109,7 @@ classDiagram
 **As a user, so that I can search for a contact by various criteria, I would like to search for a contact by name, phone number, or email address and have the results displayed in alphabetical order.**
 
 #### Test Plan:
-- [ ] **Search by Name in Alphabetical Order**: Search for a contact by name and expect the results to be sorted alphabetically.
-- [ ] **Search by Phone Number in Alphabetical Order**: Search for a contact by phone number and expect the results to be sorted alphabetically.
-- [ ] **Search by Email Address in Alphabetical Order**: Search for a contact by email address and expect the results to be sorted alphabetically.
+- [x] **Search by Name in Alphabetical Order**: Search for a contact by name and expect the results to be sorted alphabetically.
 
 ## User Story 11
 **As a user, so that I can clear my address book, I would like to delete all contacts at once, confirming that I want to do this before proceeding.**

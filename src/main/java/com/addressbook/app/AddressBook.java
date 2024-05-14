@@ -1,6 +1,8 @@
 package com.addressbook.app;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class AddressBook {
     private final ArrayList<Contact> contacts;
@@ -33,14 +35,17 @@ public class AddressBook {
         contacts.remove(removeContact);
     }
 
-    public Contact searchByName(String name) {
+    public ArrayList<Contact> searchByName(String name) {
+        ArrayList<Contact> searchResults = new ArrayList<>();
         for (Contact contact : contacts) {
-            if (contact.getName().equals(name)) {
-                return contact;
+            if (contact.getName().split(" ")[0].equals(name.split(" ")[0])) {
+                searchResults.add(contact);
             }
         }
-        return null;
+        sortContacts(searchResults);
+        return searchResults.isEmpty() ? null : searchResults;
     }
+
 
     public Contact searchByPhoneNumber(String number) {
         for (Contact contact : contacts) {
@@ -58,6 +63,10 @@ public class AddressBook {
             }
         }
         return null;
+    }
+
+    private void sortContacts(ArrayList<Contact> contacts) {
+        Collections.sort(contacts, Comparator.comparing(Contact::getName));
     }
 
 

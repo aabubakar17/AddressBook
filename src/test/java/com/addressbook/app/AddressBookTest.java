@@ -3,6 +3,7 @@ package com.addressbook.app;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+import java.util.ArrayList;
 
 public class AddressBookTest {
 
@@ -78,23 +79,20 @@ public class AddressBookTest {
             //ACT
             testAddressBook.addContact(mockContact);
             testAddressBook.addContact(mockContactTwo);
-            Contact foundContact = testAddressBook.searchByName("rayne wooney");
+            ArrayList<Contact> foundContact = testAddressBook.searchByName("rayne wooney");
 
             //ASSERT
-            assertEquals("rayne wooney", foundContact.getName());
-            assertTrue(testAddressBook.viewAllContacts().contains(foundContact));
+            assertEquals("rayne wooney", foundContact.get(0).getName());
+            assertTrue(testAddressBook.viewAllContacts().contains(foundContact.get(0)));
         }
 
         @Test
         @DisplayName("Test searching for a non-existent contact by name")
         void testSearchingForNonExistentContactByName() {
-            //ARRANGE
-
-
             //ACT
             testAddressBook.addContact(mockContact);
             testAddressBook.addContact(mockContactTwo);
-            Contact foundContact = testAddressBook.searchByName("pan versie");
+            ArrayList<Contact> foundContact = testAddressBook.searchByName("pan versie");
 
             //ASSERT
             assertNull(foundContact);
@@ -108,7 +106,7 @@ public class AddressBookTest {
             //ACT
             testAddressBook.addContact(mockContact);
             testAddressBook.addContact(mockContactTwo);
-            Contact foundContact = testAddressBook.searchByPhoneNumber("07956806754");
+           Contact foundContact = testAddressBook.searchByPhoneNumber("07956806754");
 
             //ASSERT
             assertEquals("07956806754", foundContact.getPhoneNumber());
@@ -262,6 +260,7 @@ public class AddressBookTest {
             when(mockContact.getPhoneNumber()).thenReturn("07956809739");
             when(mockContact.getEmail()).thenReturn("karry.hane@gmail.com");
         }
+
         @Test
         @DisplayName("Test removing a contact from the address book")
         void testRemovingAContactFromAddressBook() {
@@ -290,62 +289,60 @@ public class AddressBookTest {
     }
 
 
+    @Nested
+    @DisplayName("Check Contact Uniqueness")
+    class CheckContactUniqueness {
 
+        private AddressBook testAddressBook;
+        private Contact mockContact1;
+        private Contact mockContact2;
 
-        @Nested
-        @DisplayName("Check Contact Uniqueness")
-        class CheckContactUniqueness {
-
-            private AddressBook testAddressBook;
-            private Contact mockContact1;
-            private Contact mockContact2;
-
-            @BeforeEach
-            public void setUp() {
-                testAddressBook = new AddressBook();
-                mockContact1 = mock(Contact.class);
-                mockContact2 = mock(Contact.class);
-            }
-
-            @Test
-            @DisplayName("Test adding contact with duplicate phone number")
-            void testAddingContactWithDuplicatePhoneNumber() {
-                // ARRANGE
-                when(mockContact1.getName()).thenReturn("karry hane");
-                when(mockContact1.getPhoneNumber()).thenReturn("07956809739");
-                when(mockContact1.getEmail()).thenReturn("karry.hane@gmail.com");
-
-                when(mockContact2.getPhoneNumber()).thenReturn("07956809739");
-                when(mockContact2.getEmail()).thenReturn("rayne.wooney@gmail.com");
-                when(mockContact2.getName()).thenReturn("rayne wooney");
-
-                // ACT
-                testAddressBook.addContact(mockContact1);
-
-                // ASSERT
-                assertThrows(IllegalArgumentException.class, () -> testAddressBook.addContact(mockContact2));
-            }
-
-            @Test
-            @DisplayName("Test adding contact with duplicate email address")
-            void testAddingContactWithDuplicateEmailAddress() {
-                // ARRANGE
-                when(mockContact1.getName()).thenReturn("karry hane");
-                when(mockContact1.getPhoneNumber()).thenReturn("079568865134");
-                when(mockContact1.getEmail()).thenReturn("karry.hane@gmail.com");
-
-                when(mockContact2.getPhoneNumber()).thenReturn("07956809739");
-                when(mockContact2.getEmail()).thenReturn("karry.hane@gmail.com");
-                when(mockContact2.getName()).thenReturn("rayne wooney");
-
-                // ACT
-                testAddressBook.addContact(mockContact1);
-
-                // ASSERT
-                assertThrows(IllegalArgumentException.class, () -> testAddressBook.addContact(mockContact2));
-            }
-
+        @BeforeEach
+        public void setUp() {
+            testAddressBook = new AddressBook();
+            mockContact1 = mock(Contact.class);
+            mockContact2 = mock(Contact.class);
         }
+
+        @Test
+        @DisplayName("Test adding contact with duplicate phone number")
+        void testAddingContactWithDuplicatePhoneNumber() {
+            // ARRANGE
+            when(mockContact1.getName()).thenReturn("karry hane");
+            when(mockContact1.getPhoneNumber()).thenReturn("07956809739");
+            when(mockContact1.getEmail()).thenReturn("karry.hane@gmail.com");
+
+            when(mockContact2.getPhoneNumber()).thenReturn("07956809739");
+            when(mockContact2.getEmail()).thenReturn("rayne.wooney@gmail.com");
+            when(mockContact2.getName()).thenReturn("rayne wooney");
+
+            // ACT
+            testAddressBook.addContact(mockContact1);
+
+            // ASSERT
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.addContact(mockContact2));
+        }
+
+        @Test
+        @DisplayName("Test adding contact with duplicate email address")
+        void testAddingContactWithDuplicateEmailAddress() {
+            // ARRANGE
+            when(mockContact1.getName()).thenReturn("karry hane");
+            when(mockContact1.getPhoneNumber()).thenReturn("079568865134");
+            when(mockContact1.getEmail()).thenReturn("karry.hane@gmail.com");
+
+            when(mockContact2.getPhoneNumber()).thenReturn("07956809739");
+            when(mockContact2.getEmail()).thenReturn("karry.hane@gmail.com");
+            when(mockContact2.getName()).thenReturn("rayne wooney");
+
+            // ACT
+            testAddressBook.addContact(mockContact1);
+
+            // ASSERT
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.addContact(mockContact2));
+        }
+
+    }
 
     @Nested
     @DisplayName("View All Contacts")
@@ -400,8 +397,55 @@ public class AddressBookTest {
     }
 
 
+    @Nested
+    @DisplayName("Alphabetical Order Comments ")
+    class AlphabeticalOrderContacts {
+        private AddressBook testAddressBook;
+        private Contact mockContact1;
+        private Contact mockContact2;
+        private Contact mockContact3;
+
+        @BeforeEach
+        public void setUp() {
+            testAddressBook = new AddressBook();
+            mockContact1 = mock(Contact.class);
+            mockContact2 = mock(Contact.class);
+            mockContact3 = mock(Contact.class);
+
+            when(mockContact1.getName()).thenReturn("karry hane");
+            when(mockContact1.getPhoneNumber()).thenReturn("079568865134");
+            when(mockContact1.getEmail()).thenReturn("karry.hane@gmail.com");
+
+            when(mockContact2.getPhoneNumber()).thenReturn("07956809739");
+            when(mockContact2.getEmail()).thenReturn("karry.wooney@gmail.com");
+            when(mockContact2.getName()).thenReturn("karry wooney");
+
+            when(mockContact3.getName()).thenReturn("karry jerry");
+            when(mockContact3.getPhoneNumber()).thenReturn("079567654339");
+            when(mockContact3.getEmail()).thenReturn("karry.jerry@gmail.com");
+
+        }
 
 
+        @Test
+        @DisplayName("Test search by name")
+        public void testSearchByName() {
+
+            //ACT
+            testAddressBook.addContact(mockContact1);
+            testAddressBook.addContact(mockContact2);
+            testAddressBook.addContact(mockContact3);
 
 
+            ArrayList<Contact> searchResults = testAddressBook.searchByName("karry hane");
+
+            //ASSERT
+            for (int i = 0; i < searchResults.size() - 1; i++) {
+                String currentName = searchResults.get(i).getName();
+                String nextName = searchResults.get(i + 1).getName();
+                assertTrue(currentName.compareTo(nextName) <= 0);
+            }
+
+        }
+    }
 }
