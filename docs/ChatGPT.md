@@ -25,3 +25,10 @@
 
 ## response:
 ![img.png](debugging2.png)
+
+## Test Case for delete cancellation:
+## prompt:
+![img.png](cancel1.png)
+
+## response:
+![img_1.png](Cancel2.png)

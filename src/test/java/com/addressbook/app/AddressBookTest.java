@@ -4,6 +4,8 @@ import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 import java.util.ArrayList;
+import java.io.ByteArrayInputStream;
+
 
 public class AddressBookTest {
 
@@ -456,10 +458,9 @@ public class AddressBookTest {
         private AddressBook testAddressBook;
         private Contact mockContact1;
         private Contact mockContact2;
-        @Test
-        @DisplayName("Test deleting all contacts")
-        void testDeleteAllContacts() {
-            // ARRANGE
+
+        @BeforeEach
+        public void setUp() {
             testAddressBook = new AddressBook();
             mockContact1 = mock(Contact.class);
             mockContact2 = mock(Contact.class);
@@ -470,17 +471,38 @@ public class AddressBookTest {
             when(mockContact2.getPhoneNumber()).thenReturn("07956809739");
             when(mockContact2.getEmail()).thenReturn("rayne.wooney@gmail.com");
             when(mockContact2.getName()).thenReturn("rayne wooney");
+            testAddressBook.addContact(mockContact1);
+            testAddressBook.addContact(mockContact2);
 
+        }
+        @Test
+        @DisplayName("Test deleting all contacts")
+        void testDeleteAllContacts() {
 
 
             // ACT
-            testAddressBook.addContact(mockContact1);
-            testAddressBook.addContact(mockContact2);
+            ByteArrayInputStream in = new ByteArrayInputStream("yes".getBytes());
+            System.setIn(in);
             testAddressBook.deleteAllContacts();
 
             // ASSERT
             assertTrue(testAddressBook.viewAllContacts().isEmpty());
         }
+
+        @Test
+        @DisplayName("Test canceling deletion of all contacts")
+        void testCancelDeleteAllContacts() {
+
+            // ACT
+            ByteArrayInputStream in = new ByteArrayInputStream("no".getBytes());
+            System.setIn(in);
+            testAddressBook.deleteAllContacts();
+
+
+            // ASSERT
+            assertFalse(testAddressBook.viewAllContacts().isEmpty());
+        }
+
 
     }
 }

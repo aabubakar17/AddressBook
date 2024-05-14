@@ -3,7 +3,7 @@ package com.addressbook.app;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-
+import java.util.Scanner;
 public class AddressBook {
     private final ArrayList<Contact> contacts;
 
@@ -75,7 +75,12 @@ public class AddressBook {
     }
 
     public void deleteAllContacts() {
-        contacts.clear();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Are you sure you want to delete all contacts? (yes/no)");
+        String input = scanner.nextLine().trim().toLowerCase();
+        if (input.equals("yes")) {
+            contacts.clear();
+        }
     }
 
     private boolean checkUniqueContact(Contact newContact) {

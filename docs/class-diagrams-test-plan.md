@@ -116,5 +116,5 @@ classDiagram
 
 #### Test Plan:
 - [x] **Delete All Contacts**: Delete all contacts from the address book. Expect the address book to be empty after deletion.
-- [ ] **Cancel Deletion**: Attempt to delete all contacts but cancel the operation when prompted. Expect no contacts to be deleted.
+- [x] **Cancel Deletion**: Attempt to delete all contacts but cancel the operation when prompted. Expect no contacts to be deleted.
 
