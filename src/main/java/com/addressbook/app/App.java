@@ -11,11 +11,13 @@ public class App {
         System.out.println("\nAddress Book Menu:");
         System.out.println("1. Add Contact");
         System.out.println("2. Search by Name");
-        System.out.println("3. Remove Contact");
-        System.out.println("4. Edit Contact");
-        System.out.println("5. View All Contacts");
-        System.out.println("6. Delete All Contacts");
-        System.out.println("7. Exit");
+        System.out.println("3. Search by Phone Number");
+        System.out.println("4. Search by Email");
+        System.out.println("5. Remove Contact");
+        System.out.println("6. Edit Contact");
+        System.out.println("7. View All Contacts");
+        System.out.println("8. Delete All Contacts");
+        System.out.println("9. Exit");
     }
 
     public static void addContact() {
@@ -48,6 +50,29 @@ public class App {
 
     }
 
+
+    public static void searchByPhoneNumber() {
+        System.out.print("Enter Phone Number to search: ");
+        String number = scanner.nextLine();
+        Contact newContact = addressBook.searchByPhoneNumber(number);
+        if (newContact != null) {
+            PrintToConsole.print(newContact);
+        }else{
+            System.out.println("No contacts found with that phone Number.");
+        }
+    }
+
+    public static void searchByEmail() {
+        System.out.print("Enter email to search: ");
+        String email = scanner.nextLine();
+        Contact newContact = addressBook.searchByEmail(email);
+        if (newContact != null) {
+            PrintToConsole.print(newContact);
+        }else{
+            System.out.println("No contacts found with that Email.");
+        }
+    }
+
     public static void removeContact() {
         System.out.print("Enter firstName and lastName of contact to remove: ");
         String name = scanner.nextLine();
@@ -66,20 +91,20 @@ public class App {
         String name = scanner.nextLine();
         ArrayList<Contact> oldContact = addressBook.searchByName(name);
         if (!oldContact.isEmpty()) {
-                System.out.println("Enter updated details for the contact:");
-                System.out.print("New name: ");
-                String newName = scanner.nextLine();
-                System.out.print("New phone number: ");
-                String newPhoneNumber = scanner.nextLine();
-                System.out.print("New email: ");
-                String newEmail = scanner.nextLine();
-                Contact updatedContact = new Contact(newName, newPhoneNumber, newEmail);
-                try {
-                    addressBook.editContact(oldContact.get(0), updatedContact);
-                    System.out.println("Contact updated successfully.");
-                } catch (IllegalArgumentException e) {
-                    System.out.println(e.getMessage());
-                }
+            System.out.println("Enter updated details for the contact:");
+            System.out.print("New name: ");
+            String newName = scanner.nextLine();
+            System.out.print("New phone number: ");
+            String newPhoneNumber = scanner.nextLine();
+            System.out.print("New email: ");
+            String newEmail = scanner.nextLine();
+            Contact updatedContact = new Contact(newName, newPhoneNumber, newEmail);
+            try {
+                addressBook.editContact(oldContact.get(0), updatedContact);
+                System.out.println("Contact updated successfully.");
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 
@@ -110,18 +135,24 @@ public class App {
                     searchByName();
                     break;
                 case "3":
-                    removeContact();
+                    searchByPhoneNumber();
                     break;
                 case "4":
-                    editContact();
+                    searchByEmail();
                     break;
-                case "5":
-                    viewAllContacts();
+                case"5":
+                    removeContact();
                     break;
                 case "6":
-                    deleteAllContacts();
+                    editContact();
                     break;
                 case "7":
+                    viewAllContacts();
+                    break;
+                case "8":
+                    deleteAllContacts();
+                    break;
+                case "9":
                     System.out.println("Exiting...");
                     scanner.close();
                     System.exit(0);
