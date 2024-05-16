@@ -80,6 +80,7 @@ public class AddressBook {
         String input = scanner.nextLine().trim().toLowerCase();
         if (input.equals("yes")) {
             contacts.clear();
+            System.out.println("All contacts deleted.");
         }
     }
 
